@@ -3,7 +3,7 @@ from mysql.connector import Error
 from services import connectdb
 
 
-#funcao para conectar no banco de dados e buscar usuarios
+# funcao para conectar no banco de dados e buscar usuarios
 def users_search_db():
     connection = None
     cursor = None
@@ -21,7 +21,7 @@ def users_search_db():
 
         return results
     except Error as err:
-        print(f"[ERRO] Falha ao cadastrar usuário: {err}")
+        print(f'[ERRO] Falha ao cadastrar usuário: {err}')
         return False
 
     finally:
@@ -29,8 +29,3 @@ def users_search_db():
             cursor.close()
         if connection:
             connection.close()
-
-
-
-
-

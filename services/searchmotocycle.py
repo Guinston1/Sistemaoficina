@@ -19,7 +19,7 @@ def list_motocycle():
 
         return results
     except Error as err:
-        print(f"[ERRO] Falha ao buscar as motos no banco de dados: {err}")
+        print(f'[ERRO] Falha ao buscar as motos no banco de dados: {err}')
 
     finally:
         if connection:

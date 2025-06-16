@@ -5,20 +5,43 @@ from mysql.connector import Error
 from services import connectdb
 
 
-#funcao para salver o cliente no banco de dados
-def save_client_db(nome, last, cpf, telefone, bairro, cidade, estado, endereco, marca, modelo, ano, placa):
+# funcao para salver o cliente no banco de dados
+def save_client_db(
+    nome,
+    last,
+    cpf,
+    telefone,
+    bairro,
+    cidade,
+    estado,
+    endereco,
+    marca,
+    modelo,
+    ano,
+    placa,
+):
     connection = None
     cursor = None
     try:
         connection = connectdb.connectdb()
         cursor = connection.cursor()
 
-        data_atual = datetime.now().strftime("%d/%m/%Y")
+        data_atual = datetime.now().strftime('%d/%m/%Y')
 
         query = """INSERT INTO clientes (first_name, last_name, cpf, telefone, bairro, cidade,
         estado, endereço, data_cadastro) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s);"""
 
-        values = (nome, last, cpf, telefone, bairro, cidade, estado, endereco, data_atual)
+        values = (
+            nome,
+            last,
+            cpf,
+            telefone,
+            bairro,
+            cidade,
+            estado,
+            endereco,
+            data_atual,
+        )
 
         cursor.execute(query, values)
 
@@ -38,9 +61,9 @@ def save_client_db(nome, last, cpf, telefone, bairro, cidade, estado, endereco, 
                 connection.close()
                 return True
             except Error as err:
-                print(f"[ERRO] Falha ao cadastrar motocicleta: {err}")
+                print(f'[ERRO] Falha ao cadastrar motocicleta: {err}')
     except Error as err:
-        print(f"[ERRO] Falha ao cadastrar o cliente: {err}")
+        print(f'[ERRO] Falha ao cadastrar o cliente: {err}')
 
     finally:
         if connection:

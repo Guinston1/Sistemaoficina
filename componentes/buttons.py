@@ -9,7 +9,7 @@ def elevated(
     width: int = 250,
     height: int = 30,
     icon: str = None,
-    radius: int = 10
+    radius: int = 10,
 ) -> ft.ElevatedButton:
     return ft.ElevatedButton(
         text=texto,
@@ -21,17 +21,18 @@ def elevated(
             color=color,
             bgcolor=bgcolor,
             shape=ft.RoundedRectangleBorder(radius=radius),
-            overlay_color=ft.Colors.with_opacity(0.1, "white")
-        )
+            overlay_color=ft.Colors.with_opacity(0.1, 'white'),
+        ),
     )
 
+
 def menuitembt(
-        texto: str,
-        icon: str = None,
-        bgcolor: str = "#1c4861",
-        radius: int = 5,
-        on_click=None,
-        on_hover=None
+    texto: str,
+    icon: str = None,
+    bgcolor: str = '#1c4861',
+    radius: int = 5,
+    on_click=None,
+    on_hover=None,
 ) -> ft.MenuItemButton:
     return ft.MenuItemButton(
         content=ft.Text(texto),
@@ -40,17 +41,19 @@ def menuitembt(
         on_hover=on_hover,
         style=ft.ButtonStyle(
             bgcolor={
-                ft.ControlState.HOVERED: "#397490",
-                ft.ControlState.FOCUSED: "#1c4861",
-                ft.ControlState.DEFAULT: "#1c4861"
+                ft.ControlState.HOVERED: '#397490',
+                ft.ControlState.FOCUSED: '#1c4861',
+                ft.ControlState.DEFAULT: '#1c4861',
             },
-            color="white",
-            shape=ft.RoundedRectangleBorder(radius=radius)
-        )
+            color='white',
+            shape=ft.RoundedRectangleBorder(radius=radius),
+        ),
     )
 
-def iconbutton(icone: str = None,
-    tooltip: str = "",
+
+def iconbutton(
+    icone: str = None,
+    tooltip: str = '',
     on_click=None,
     bgcolor: str = None,
     icon_size: int = 20,
@@ -59,7 +62,7 @@ def iconbutton(icone: str = None,
     data=None,
     radius: int = 5,
     disabled: bool = False,
-    icon_color: str = "white"
+    icon_color: str = 'white',
 ):
     return ft.IconButton(
         icon=icone,
@@ -73,5 +76,5 @@ def iconbutton(icone: str = None,
         alignment=ft.alignment.center,
         disabled=disabled,
         icon_color=icon_color,
-        style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=radius))
+        style=ft.ButtonStyle(shape=ft.RoundedRectangleBorder(radius=radius)),
     )

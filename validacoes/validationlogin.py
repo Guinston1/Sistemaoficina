@@ -5,7 +5,7 @@ def validation_login(login, password):
     connection = connectdb.connectdb()
     cursor = connection.cursor()
 
-    sql = "SELECT * FROM usuarios WHERE login = %s AND password = %s"
+    sql = 'SELECT * FROM usuarios WHERE login = %s AND password = %s'
     values = (login, password)
 
     cursor.execute(sql, values)
@@ -16,7 +16,7 @@ def validation_login(login, password):
     connection.close()
 
     if results:
-        print("Successful Login")
+        print('Successful Login')
         return results
     else:
         return False

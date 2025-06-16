@@ -3,9 +3,9 @@ from mysql.connector import Error
 from services import connectdb
 
 
-#funcao para buscar os clientes cadastrados
+# funcao para buscar os clientes cadastrados
 def search_clients():
-    connection =None
+    connection = None
     cursor = None
 
     try:
@@ -22,7 +22,7 @@ def search_clients():
 
         return results
     except Error as err:
-        print("[ERRO] Failed to fetch customers from database: erro {err} ")
+        print('[ERRO] Failed to fetch customers from database: erro {err} ')
 
     finally:
         if connection:
