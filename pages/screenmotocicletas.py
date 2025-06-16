@@ -22,7 +22,11 @@ def add_motos(list_motos):
         list_motos.controls.append(cabecalho)
         list_motos.update()
 
-        colunas_tabela = ft.Row()
+        colunas_tabela = ft.Row(
+            controls=[
+
+            ]
+        )
 
         for id_moto, marca, modelo, ano, placa, client_Id, data_cadastro in dados_motos:
 
