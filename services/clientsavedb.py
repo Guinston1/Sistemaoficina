@@ -1,6 +1,8 @@
-from services import connectdb
 from datetime import datetime
+
 from mysql.connector import Error
+
+from services import connectdb
 
 
 #funcao para salver o cliente no banco de dados

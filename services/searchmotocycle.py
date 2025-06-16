@@ -1,5 +1,7 @@
-from services import connectdb
 from mysql.connector import Error
+
+from services import connectdb
+
 
 def list_motocycle():
 

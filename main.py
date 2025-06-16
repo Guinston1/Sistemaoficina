@@ -1,11 +1,14 @@
+from datetime import date
+
 import flet as ft
 from flet.core.border_radius import horizontal
-from flet.core.types import MainAxisAlignment, CrossAxisAlignment
-from datetime import date
-from services import connectdb
+from flet.core.types import CrossAxisAlignment, MainAxisAlignment
+
 from componentes import buttons, inputs, texts
+from pages import screenclients, screenmotocicletas, userlist, userregistration
+from services import connectdb
 from validacoes import validationlogin
-from pages import userregistration, userlist, screenclients, screenmotocicletas
+
 
 def main(page: ft.Page):
 

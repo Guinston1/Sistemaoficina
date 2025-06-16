@@ -1,8 +1,9 @@
+import flet as ft
 from flet.core.types import MainAxisAlignment
+
+from componentes import buttons, inputs, texts
 from pages import screenregistrationclient
 from services import searchclientsdb
-from componentes import inputs, texts, buttons
-import flet as ft
 
 
 #funcao para criar a tela de clientes

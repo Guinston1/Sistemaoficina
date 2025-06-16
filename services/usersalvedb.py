@@ -1,7 +1,9 @@
-from services import connectdb
 from mysql.connector import Error
 
-def user_salve(name,user, password, group, store):
+from services import connectdb
+
+
+def user_salve(name, user, password, group, store):
     connection = None
     cursor = None
 
@@ -17,11 +19,11 @@ def user_salve(name,user, password, group, store):
         cursor.execute(query, values)
         connection.commit()
 
-        print("user registered successfully")
+        print('user registered successfully')
         return True
 
     except Error as err:
-        print(f"[ERRO] failed to register user: {err}")
+        print(f'[ERRO] failed to register user: {err}')
         return False
 
     finally:
@@ -29,8 +31,3 @@ def user_salve(name,user, password, group, store):
             cursor.close()
         if connection:
             connection.close()
-
-
-
-
-

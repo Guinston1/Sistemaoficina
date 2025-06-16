@@ -1,8 +1,9 @@
-import mysql.connector
 import os
-from mysql.connector import Error
-from dotenv import load_dotenv
 from pathlib import Path
+
+import mysql.connector
+from dotenv import load_dotenv
+from mysql.connector import Error
 
 
 def connectdb():

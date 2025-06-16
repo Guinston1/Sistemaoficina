@@ -1,5 +1,6 @@
 import flet as ft
 
+
 #criação de textos
 def criar_texto(
         conteudo:str,

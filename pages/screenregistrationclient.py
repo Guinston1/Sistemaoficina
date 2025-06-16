@@ -1,9 +1,11 @@
-from encodings.aliases import aliases
 import re
+from encodings.aliases import aliases
+
 import flet as ft
-from flet.core.types import MainAxisAlignment, CrossAxisAlignment
+from flet.core.types import CrossAxisAlignment, MainAxisAlignment
+
+from componentes import buttons, inputs, texts
 from services import clientsavedb
-from componentes import buttons, inputs,texts
 
 
 #funcao para tela de cadastro de clientes

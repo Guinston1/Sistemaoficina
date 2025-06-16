@@ -1,8 +1,9 @@
 import flet as ft
 from flet.core.control_event import ControlEvent
-from flet.core.types import MainAxisAlignment, CrossAxisAlignment, FontWeight
-from services import usersalvedb, listgroups
-from componentes import texts, buttons, inputs
+from flet.core.types import CrossAxisAlignment, FontWeight, MainAxisAlignment
+
+from componentes import buttons, inputs, texts
+from services import listgroups, usersalvedb
 
 
 def newuser() -> ft.Container:

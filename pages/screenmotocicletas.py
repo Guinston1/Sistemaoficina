@@ -1,6 +1,7 @@
 import flet as ft
+
+from componentes import buttons, inputs, texts
 from services import searchmotocycle
-from componentes import inputs,texts, buttons
 
 
 def screen_list_motos():

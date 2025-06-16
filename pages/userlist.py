@@ -1,8 +1,8 @@
-from services import connectdb
-from componentes import texts, inputs, buttons
 import flet as ft
 from mysql.connector import Error
-from services import searchusersdb
+
+from componentes import buttons, inputs, texts
+from services import connectdb, searchusersdb
 
 
 #função para listar os usuarios

@@ -1,5 +1,6 @@
-from services import connectdb
 from mysql.connector import Error
+
+from services import connectdb
 
 
 #funcao para conectar no banco de dados e buscar usuarios
