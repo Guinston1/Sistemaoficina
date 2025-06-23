@@ -27,7 +27,7 @@ def list_motocycle():
         if cursor:
             cursor.close()
 
-def savemotodb():
-    connection = None,
-    cursor = None,
 
+def savemotodb():
+    connection = (None,)
+    cursor = (None,)

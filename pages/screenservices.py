@@ -1,6 +1,7 @@
 import flet as ft
+
+from componentes import buttons, inputs, texts
 from services import connectdb, searchservices
-from componentes import inputs, buttons, texts
 
 
 def screen_list_services():
@@ -10,6 +11,6 @@ def screen_list_services():
 
     return list_services
 
+
 def add_services():
     services = searchservices.search_services()
-

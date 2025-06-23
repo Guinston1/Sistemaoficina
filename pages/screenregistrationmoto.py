@@ -1,43 +1,46 @@
 import re
 import time
+
 import flet as ft
 from flet.core.types import MainAxisAlignment
 
 from componentes import buttons, inputs, texts
-from services.searchclienteselect import search_client_select
 from services.clientsavedb import motosave
+from services.searchclienteselect import search_client_select
 
 
 def screen_registration_moto():
-
     def salvar_moto(e):
 
         cliente = search_client_select(input_cpf.value)
-        id_cliente, nome_cliente,sobrenome_cliente = cliente
+        id_cliente, nome_cliente, sobrenome_cliente = cliente
 
-        gravar_moto = motosave(id_cliente,
-                               input_marca.value,
-                               input_modelo.value,
-                               input_ano.value,
-                               input_placa.value)
+        gravar_moto = motosave(
+            id_cliente,
+            input_marca.value,
+            input_modelo.value,
+            input_ano.value,
+            input_placa.value,
+        )
         if gravar_moto is True:
-            text_responsedb.value = f"Motocicleta cadastrada com sucesso para o cliente {nome_cliente}{sobrenome_cliente}."
+            text_responsedb.value = f'Motocicleta cadastrada com sucesso para o cliente {nome_cliente}{sobrenome_cliente}.'
             text_responsedb.update()
 
-            input_marca.value = ""
+            input_marca.value = ''
             input_marca.update()
-            input_modelo.value = ""
+            input_modelo.value = ''
             input_modelo.update()
-            input_ano.value = ""
+            input_ano.value = ''
             input_ano.update()
-            input_placa.value = ""
+            input_placa.value = ''
             input_placa.update()
-            input_cpf.value = ""
+            input_cpf.value = ''
             input_cpf.update()
         else:
-            text_responsedb.value = "Falha ao tentar salvar motocicleta no banco de dados!"
+            text_responsedb.value = (
+                'Falha ao tentar salvar motocicleta no banco de dados!'
+            )
             text_responsedb.update()
-
 
     def formatar_ano(valor):
         numeros = ''.join(filter(str.isdigit, valor))[
@@ -86,20 +89,17 @@ def screen_registration_moto():
         e.control.value = formatar_cpf(e.control.value)
         e.control.update()
 
-
     text_titulo = texts.criar_texto(
-        "Cadastrar Motocicleta",
+        'Cadastrar Motocicleta',
         size=20,
         weight=ft.FontWeight.BOLD,
         color='white',
     )
 
-    text_responsedb = texts.criar_texto(
-        ""
-    )
+    text_responsedb = texts.criar_texto('')
 
     input_cpf = inputs.criar_input(
-        "CPF cliente",
+        'CPF cliente',
         prefix_icon=ft.Icons.PERSON,
         border_color='black',
         bgcolor='#2b5e78',
@@ -112,14 +112,14 @@ def screen_registration_moto():
         bgcolor='#2b5e78',
         border_color='black',
         prefix_icon=ft.Icons.FACTORY,
-        label="Marca"
+        label='Marca',
     )
     input_modelo = inputs.criar_input(
         on_change=inicial_maiuscula,
         bgcolor='#2b5e78',
         border_color='black',
         prefix_icon=ft.Icons.DESIGN_SERVICES,
-        label='Modelo'
+        label='Modelo',
     )
     input_ano = inputs.criar_input(
         on_change=ao_digitar_ano,
@@ -133,17 +133,16 @@ def screen_registration_moto():
         bgcolor='#2b5e78',
         border_color='black',
         prefix_icon=ft.Icons.CONFIRMATION_NUMBER,
-        label='Placa'
+        label='Placa',
     )
 
     btn_salvar_moto = buttons.elevated(
-        "Salvar",
+        'Salvar',
         icon=ft.Icons.SAVE,
         color='white',
         bgcolor='green',
         width=150,
-        on_click=salvar_moto
-
+        on_click=salvar_moto,
     )
 
     coluna_cad_moto = ft.Container(
@@ -156,15 +155,14 @@ def screen_registration_moto():
                 input_ano,
                 input_placa,
                 text_responsedb,
-                btn_salvar_moto
+                btn_salvar_moto,
             ],
             expand=True,
             alignment=ft.MainAxisAlignment.CENTER,
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         ),
         expand=True,
         alignment=ft.alignment.center,
-        margin=20
+        margin=20,
     )
     return coluna_cad_moto
-

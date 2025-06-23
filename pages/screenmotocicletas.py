@@ -1,7 +1,7 @@
 import flet as ft
 
-from pages.screenregistrationmoto import screen_registration_moto
 from componentes import buttons, inputs, texts
+from pages.screenregistrationmoto import screen_registration_moto
 from services import searchmotocycle
 
 
@@ -24,7 +24,6 @@ def add_motos(list_motos):
         registration_moto = screen_registration_moto()
         list_motos.controls.append(registration_moto)
         list_motos.update()
-
 
     def update_list(dados_motos, cabecalho):
         list_motos.controls.clear()
@@ -207,9 +206,7 @@ def add_motos(list_motos):
 
     def filter_motos(e):
         termo = e.control.value.upper()
-        motos_filtradas = [
-            c for c in dados_motos if termo in c[4]
-        ]
+        motos_filtradas = [c for c in dados_motos if termo in c[4]]
         update_list(motos_filtradas, cabecalho)
 
     text_pesquisar = texts.criar_texto('Pesquisar:', size=14)
@@ -239,7 +236,7 @@ def add_motos(list_motos):
             expand=True,
         ),
         expand=True,
-        margin=10
+        margin=10,
     )
 
     list_motos.controls.append(cabecalho)

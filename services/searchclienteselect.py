@@ -1,5 +1,6 @@
 from jinja2.lexer import count_newlines
 from mysql.connector import Error
+
 from services.connectdb import connectdb
 
 
@@ -24,4 +25,3 @@ def search_client_select(cpf):
             connection.close()
         if cursor:
             cursor.close()
-

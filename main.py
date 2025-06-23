@@ -5,7 +5,8 @@ from flet.core.border_radius import horizontal
 from flet.core.types import CrossAxisAlignment, MainAxisAlignment
 
 from componentes import buttons, inputs, texts
-from pages import screenclients, screenmotocicletas, userlist, userregistration, screenservices
+from pages import (screenclients, screenmotocicletas, screenservices, userlist,
+                   userregistration)
 from services import connectdb
 from validacoes import validationlogin
 
@@ -39,7 +40,6 @@ def main(page: ft.Page):
             page.update()
 
             screenservices.add_services(list_services)
-
 
         def screen_list_motocicletas(e):
             print('Funcao motocicletas selecionada.')
