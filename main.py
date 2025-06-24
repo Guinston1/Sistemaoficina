@@ -198,7 +198,7 @@ def main(page: ft.Page):
                                     ft.ControlState.HOVERED: ft.Colors.BLUE_GREY_800
                                 },
                             ),
-                            on_click=handle_menu_item_click,
+                            on_click=screen_list_services,
                         ),
                         ft.MenuItemButton(
                             content=ft.Text('Produtos'),
