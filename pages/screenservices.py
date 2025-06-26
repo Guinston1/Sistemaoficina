@@ -1,3 +1,5 @@
+import re
+
 import flet as ft
 
 from componentes import buttons, inputs, texts
@@ -122,7 +124,7 @@ def add_services(list_services):
                                 icon=ft.Icons.EDIT,
                                 height=20,
                                 icon_size=15,
-                                tooltip='Histórico',
+                                tooltip='Editar',
                                 data=id_service,
                                 bgcolor='#1c4861',
                                 on_click=lambda e: print(
@@ -143,10 +145,55 @@ def add_services(list_services):
             list_services.controls.append(line)
         list_services.update()
 
+    def save_servico_db(e):
+        save_service = searchservices.save_service(
+            input_nome_service.value,
+            input_tempo_service.value,
+            input_descricao_service.value,
+            input_preco_service.value,
+        )
+        if save_service is True:
+            msg_db.value = 'Serviço cadastrado com sucesso.'
+            msg_db.update()
+            input_nome_service.value = ''
+            input_nome_service.update()
+            input_descricao_service.value = ''
+            input_descricao_service.update()
+            input_tempo_service.value = ''
+            input_tempo_service.update()
+            input_preco_service.value = ''
+            input_preco_service.update()
+        else:
+            msg_db.value = 'Falha ao salvar o serviço no banco de dados.'
+            msg_db.update()
+
+    def editar_service(e):
+        pass
+
     def new_service(e):
         list_services.controls.clear()
         list_services.controls.append(formulario_service)
         list_services.update()
+
+    def formatar_preco(valor):
+        numeros = re.sub(r'\D','', valor)[
+            :9
+        ]
+
+        numeros = re.sub(r'\D', '', valor)  # remove tudo que não for número
+        if len(numeros) < 3:
+            return numeros  # ainda não tem 2 casas decimais
+        return f'{numeros[:-2]}.{numeros[-2:]}'
+
+
+    def ao_digitar_preco(e):
+        e.control.value = formatar_preco(e.control.value)
+        e.control.update()
+
+    def ao_digitar_nome(e):
+        texto = e.control.value.title()
+        input_nome_service.value = texto
+        input_nome_service.update()
 
     def filter_services(e):
         termo = e.control.value.upper()
@@ -184,8 +231,9 @@ def add_services(list_services):
         margin=10,
     )
 
+    msg_db = ft.Text('')
     input_nome_service = inputs.criar_input(
-        'Nome', width=300, bgcolor='#1c4861', border_color='black'
+        'Nome', width=300, bgcolor='#1c4861', border_color='black', on_change=ao_digitar_nome
     )
     input_tempo_service = inputs.criar_input(
         'Tempo', width=300, bgcolor='#1c4861', border_color='black'
@@ -194,12 +242,13 @@ def add_services(list_services):
         'Descrição', width=300, bgcolor='#1c4861', border_color='black'
     )
     input_preco_service = inputs.criar_input(
-        'Preço', width=300, bgcolor='#1c4861', border_color='black'
+        'Preço', width=300, bgcolor='#1c4861', border_color='black', on_change=ao_digitar_preco
     )
     btn_salvar_service = buttons.elevated(
         'Salvar',
         color='white',
         bgcolor='green',
+        on_click=save_servico_db,
         icon=ft.Icons.SAVE,
     )
     titulo_cadastro_service = texts.criar_texto(
@@ -217,6 +266,7 @@ def add_services(list_services):
                 input_descricao_service,
                 input_preco_service,
                 btn_salvar_service,
+                msg_db
             ],
             expand=True,
             alignment=ft.MainAxisAlignment.CENTER,
