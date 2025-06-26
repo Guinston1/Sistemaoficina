@@ -143,11 +143,19 @@ def add_services(list_services):
             list_services.controls.append(line)
         list_services.update()
 
-    def new_service():
-        pass
+    def new_service(e):
+        list_services.controls.clear()
+        list_services.controls.append(formulario_service)
+        list_services.update()
 
-    def filter_services():
-        pass
+    def filter_services(e):
+        termo = e.control.value.upper()
+        servicos_filtrados = [
+            c
+            for c in dados_services
+            if termo in str(c[0]) or termo in c[1].upper()
+        ]
+        atualizar_lista(servicos_filtrados, cont_cabecalho)
 
     text_pesquisar = texts.criar_texto('Pesquisar:')
     input_pesquisar = inputs.criar_input(
@@ -174,6 +182,51 @@ def add_services(list_services):
         ),
         expand=True,
         margin=10,
+    )
+
+    input_nome_service = inputs.criar_input(
+        'Nome', width=300, bgcolor='#1c4861', border_color='black'
+    )
+    input_tempo_service = inputs.criar_input(
+        'Tempo', width=300, bgcolor='#1c4861', border_color='black'
+    )
+    input_descricao_service = inputs.criar_input(
+        'Descrição', width=300, bgcolor='#1c4861', border_color='black'
+    )
+    input_preco_service = inputs.criar_input(
+        'Preço', width=300, bgcolor='#1c4861', border_color='black'
+    )
+    btn_salvar_service = buttons.elevated(
+        'Salvar',
+        color='white',
+        bgcolor='green',
+        icon=ft.Icons.SAVE,
+    )
+    titulo_cadastro_service = texts.criar_texto(
+        'Cadastro de Serviço',
+        size=20,
+        weight=ft.FontWeight.BOLD,
+    )
+
+    formulario_service = ft.Container(
+        content=ft.Column(
+            controls=[
+                titulo_cadastro_service,
+                input_nome_service,
+                input_tempo_service,
+                input_descricao_service,
+                input_preco_service,
+                btn_salvar_service,
+            ],
+            expand=True,
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        ),
+        bgcolor='#0e3249',
+        padding=20,
+        alignment=ft.alignment.center,
+        margin=ft.Margin(left=100, top=40, right=20, bottom=40),
+        expand=True,
     )
 
     atualizar_lista(dados_services, cont_cabecalho)
