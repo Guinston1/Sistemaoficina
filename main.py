@@ -5,8 +5,13 @@ from flet.core.border_radius import horizontal
 from flet.core.types import CrossAxisAlignment, MainAxisAlignment
 
 from componentes import buttons, inputs, texts
-from pages import (screenclients, screenmotocicletas, screenservices, userlist,
-                   userregistration)
+from pages import (
+    screenclients,
+    screenmotocicletas,
+    screenservices,
+    userlist,
+    userregistration,
+)
 from services import connectdb
 from validacoes import validationlogin
 

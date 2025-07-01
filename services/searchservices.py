@@ -25,6 +25,7 @@ def search_services():
         if cursor:
             cursor.close()
 
+
 def save_service(nome, tempo, descricao, preco):
     connection = None
     cursor = None
@@ -41,7 +42,7 @@ def save_service(nome, tempo, descricao, preco):
         connection.commit()
         return True
     except Error as err:
-        print(f"[ERRO] falha ao salvar serviço no banco de dados: {err}")
+        print(f'[ERRO] falha ao salvar serviço no banco de dados: {err}')
 
     finally:
         if connection:
@@ -49,3 +50,31 @@ def save_service(nome, tempo, descricao, preco):
         if cursor:
             cursor.close()
 
+
+def update_service(id_service, nome, tempo, descricao, preco):
+    connection = None
+    cursor = None
+    try:
+        connection = connectdb.connectdb()
+        cursor = connection.cursor()
+
+        query = """UPDATE servicos
+        SET nome = %s, duracao_estimada = %s, descricao = %s, preco = %s
+        WHERE id_servic = %s"""
+
+        values = (nome, tempo, descricao, preco, id_service)
+
+        cursor.execute(query, values)
+
+        connection.commit()
+
+        return True
+    except Error as err:
+        print(f'[ERRO] Falha ao atualizar o cadastro: {err}')
+        return False
+
+    finally:
+        if connection:
+            connection.close()
+        if cursor:
+            cursor.close()
