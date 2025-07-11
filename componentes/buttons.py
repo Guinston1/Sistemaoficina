@@ -8,6 +8,7 @@ def elevated(
     bgcolor: str = None,
     width: int = 250,
     height: int = 30,
+    tooltip: str = None,
     icon: str = None,
     radius: int = 10,
 ) -> ft.ElevatedButton:
@@ -17,6 +18,7 @@ def elevated(
         width=width,
         height=height,
         icon=icon,
+        tooltip=tooltip,
         style=ft.ButtonStyle(
             color=color,
             bgcolor=bgcolor,

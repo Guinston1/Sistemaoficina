@@ -11,6 +11,7 @@ from pages import (
     screenservices,
     userlist,
     userregistration,
+    productscreen
 )
 from services import connectdb
 from validacoes import validationlogin
@@ -33,6 +34,18 @@ def main(page: ft.Page):
             expand=True,
             bgcolor='#001c32',
         )
+
+        def screen_list_products(e):
+            print('Função produtos selecionada')
+
+            screen_content.content.controls.clear()
+            page.update()
+
+            product_screen = productscreen.product_list_screen()
+            screen_content.content.controls.append(product_screen)
+            page.update()
+
+            productscreen.product_screen(product_screen)
 
         def screen_list_services(e):
             print('Funcao serviços selecionada.')
@@ -214,7 +227,7 @@ def main(page: ft.Page):
                                     ft.ControlState.HOVERED: ft.Colors.BLUE_GREY_800
                                 },
                             ),
-                            on_click=handle_menu_item_click,
+                            on_click=screen_list_products,
                         ),
                     ],
                 ),
